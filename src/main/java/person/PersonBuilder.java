@@ -41,11 +41,11 @@ public class PersonBuilder {
         return this;
     }
 
-    public final Person build(final int input,final String inputId) {
+    public final Person build(final int input, final String inputId) {
         withAppearance(input);
         withPhys(input);
         withFio(input);
-        withPhone(input,inputId);
+        withPhone(input, inputId);
         final Person person = new Person(inputId, this.fio, this.phys, this.appearance, this.phone);
 
         return person;

@@ -5,7 +5,7 @@ import person.Fio;
 import static utils.FileReader.getLinesFromFile;
 import static utils.MyMath.getDigitsSum;
 
-public class FioGenerator extends GeneratorAbstract<Fio> {
+public final class FioGenerator extends GeneratorAbstract<Fio> {
 
     private String lastName;
     private String firstName;
@@ -13,16 +13,16 @@ public class FioGenerator extends GeneratorAbstract<Fio> {
 
     //реализуем паттерн Singleton. конструктор обязательно приватный
 
-    private static FioGenerator INSTANCE;
+    private static FioGenerator instance;
 
-    private FioGenerator (){
+    private FioGenerator() {
     }
 
     public static FioGenerator getInstance() {
-        if(INSTANCE == null) {
-            INSTANCE = new FioGenerator();
+        if (instance == null) {
+            instance = new FioGenerator();
         }
-        return INSTANCE;
+        return instance;
     }
 
 
@@ -35,7 +35,7 @@ public class FioGenerator extends GeneratorAbstract<Fio> {
      * @param code код для генерации
      */
     @Override
-    public final void generateParams(final int code) {
+    public void generateParams(final int code) {
         final int lastNameIndex = getDigitsSum(code);
         final String sex = (lastNameIndex % 2 == 0) ? "f" : "m";
         setLastNameFromFile(lastNameIndex, sex);
@@ -43,15 +43,15 @@ public class FioGenerator extends GeneratorAbstract<Fio> {
         setMiddleNameFromFile(getDigitsSum(code % 100), sex);
     }
 
-    public final String getLastName() {
+    public String getLastName() {
         return lastName;
     }
 
-    public final String getFirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public final String getMiddleName() {
+    public String getMiddleName() {
         return middleName;
     }
 
@@ -68,7 +68,7 @@ public class FioGenerator extends GeneratorAbstract<Fio> {
     }
 
     @Override
-    public final Fio buildResponse() {
+    public Fio buildResponse() {
       return new Fio(getLastName(), getFirstName(), getMiddleName());
     }
 }

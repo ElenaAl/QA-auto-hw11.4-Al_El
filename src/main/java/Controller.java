@@ -1,26 +1,26 @@
-import generators.FioGenerator;
+
 
 import java.nio.charset.Charset;
 import java.util.Scanner;
 
-public class Controller {
+public final class Controller {
 
     //так же применяем паттерн синглтон
-    private static Controller INSTANCE;
+    private static Controller instance;
 
-    private Controller (){
+    private Controller() {
     }
 
     public static Controller getInstance() {
-        if(INSTANCE == null) {
-            INSTANCE = new Controller();
+        if (instance == null) {
+            instance = new Controller();
         }
-        return INSTANCE;
+        return instance;
     }
 
     private final InputProcessor processor = new InputProcessor();
 
-    public final void launch() {
+    public void launch() {
         final Scanner scanner = new Scanner(System.in, Charset.defaultCharset());
         String input;
         while (true) {

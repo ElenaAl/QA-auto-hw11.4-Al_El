@@ -1,9 +1,5 @@
 package person;
 
-import generators.AppearanceGenerator;
-import generators.FioGenerator;
-import generators.PhoneGenerator;
-import generators.PhysGenerator;
 import person.appearance.Appearance;
 
 public class Person {
@@ -14,7 +10,7 @@ public class Person {
     private Appearance appearance;
     private Phone phone;
 
-    public Person (final String id, final Fio fio, final Physical phys, final Appearance appearance, final Phone phone) {
+    public Person(final String id, final Fio fio, final Physical phys, final Appearance appearance, final Phone phone) {
         this.id = id;
         this.fio = fio;
         this.phys = phys;
